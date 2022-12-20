@@ -1,0 +1,44 @@
+group 'AIRCAM'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:1.9.36")
+    }
+}
+
+apply plugin: 'net.serenity-bdd.aggregator'
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.9.36'
+
+    testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.8.0-beta2'
+
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.11.0'
+
+    compile group: 'net.serenity-bdd', name: 'serenity-junit', version: '1.9.36'
+
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.14.0'
+
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
+
+}
+
+gradle.startParameter.continueOnFailure = true
